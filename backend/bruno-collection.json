@@ -1,0 +1,2356 @@
+{
+  "name": "Expense Manager",
+  "uid": "rbCiExP4u4DVaeQI2xB4u",
+  "version": "1",
+  "items": [
+    {
+      "uid": "69mw4pzjKYqA0xSfbn0Jk",
+      "name": "App",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "DDQskDIe5QsSaJ7PvbTj9",
+          "name": "AppController_getHello",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        }
+      ]
+    },
+    {
+      "uid": "88aQJPn1FSUA2FlRhhE6N",
+      "name": "Users",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "StYG7X90E2slNh5NcPffL",
+          "name": "UsersController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/users",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"id\": \"\",\n  \"first_name\": \"\",\n  \"last_name\": \"\",\n  \"mobile\": \"\",\n  \"username\": \"\",\n  \"email\": \"\",\n  \"password\": \"\",\n  \"is_deleted\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "DoOJZP3fhPWSoQlsCa2SG",
+          "name": "UsersController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/users",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "iLUNrp6HhdfK16NA8vgyQ",
+          "name": "UsersController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/users",
+            "method": "PATCH",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"first_name\": \"\",\n  \"last_name\": \"\",\n  \"password\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "xM2LCIl0I8z9KLuN3v1ep",
+          "name": "UsersController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/users",
+            "method": "DELETE",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        }
+      ]
+    },
+    {
+      "uid": "v610kAKMWVRNXGJdcConh",
+      "name": "Transactions",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "DccMXDnwvGY5V9BX3gBEN",
+          "name": "TransactionsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/transactions",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"nature\": \"\",\n  \"type\": \"\",\n  \"category_id\": \"\",\n  \"description\": \"\",\n  \"amount\": \"\",\n  \"account_id\": \"\",\n  \"card_id\": \"\",\n  \"upi_id\": \"\",\n  \"split_users\": [],\n  \"files\": [],\n  \"comments\": [],\n  \"transaction_date\": \"\",\n  \"is_paid\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "RgQUmDa82UgckTN1coPRR",
+          "name": "TransactionsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/transactions",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "2aSxsDGILCFVwFWBUAA2X",
+          "name": "TransactionsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/transactions/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "cplJHPnY6BuUQaU6mKn1a",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "jVjosY2BjX8VMcUhcsDF8",
+          "name": "TransactionsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/transactions/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "Wm5H6VxGTMw3vAb6iofE1",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"nature\": \"\",\n  \"type\": \"\",\n  \"category_id\": \"\",\n  \"description\": \"\",\n  \"amount\": \"\",\n  \"account_id\": \"\",\n  \"card_id\": \"\",\n  \"upi_id\": \"\",\n  \"split_users\": [],\n  \"files\": [],\n  \"comments\": [],\n  \"transaction_date\": \"\",\n  \"is_paid\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "Zy20IhkSsdmEpkfPUtV1B",
+          "name": "TransactionsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/transactions/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "qyURsuCUVNJClOEGvWKIF",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "qCMQbUVmxsNMUOD68Mz9h",
+      "name": "EMIs",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "Vk2ihPBPZNx7tfL3bZrmh",
+          "name": "EmisController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/emis",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "r7RzNyTPYGXPyml2FY9Yv",
+          "name": "EmisController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/emis",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "HkjbnQdZTRpG1oEwqlBEu",
+          "name": "EmisController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/emis/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "WuZmB1Nqp142sr80NuMN5",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "MPqu4oLjDgDrKcOhmuUr9",
+          "name": "EmisController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/emis/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "cu4elBXNug1m350Inx7YM",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "u840c0jJjDEtx1FSX1fy7",
+          "name": "EmisController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/emis/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "SQ1C88ekoUpe4WALVXSd9",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "PC4fu9YhHUCDwAvkomWl6",
+      "name": "Recurrings",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "OnAN8YSu3Ri0xrDq46BcR",
+          "name": "RecurringsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/recurrings",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "pfwCODabQq0glNHCyNOaN",
+          "name": "RecurringsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/recurrings",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "2VFhEqKWhURC4JgQABIB5",
+          "name": "RecurringsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/recurrings/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "5zU88ocLXb9t1x2WYwZIG",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "qr4hQPaOdGCSS3PPxHW4R",
+          "name": "RecurringsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/recurrings/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "vETe4T6ko1Ly7ICetf8e5",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "Th1zo6x488Lnapd6mtq5c",
+          "name": "RecurringsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/recurrings/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "dKBNTUXygqSx6zKWBKX5P",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "4ng63xIF6l3NwK5TG5iyU",
+      "name": "Accounts",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "EIeF8nhcamFiwUDsX7hEN",
+          "name": "AccountsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/accounts",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\": \"\",\n  \"description\": \"\",\n  \"balance\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "2uvxvw6RtgflSruvn7YhS",
+          "name": "AccountsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/accounts",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "KNwXSBba9NxifiLKluSDD",
+          "name": "AccountsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/accounts/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "C9g5kkKkOu7avdmJKeewQ",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "cM9T682ZUWOqesQ9CH2zR",
+          "name": "AccountsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/accounts/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "bfFI4occ4aWAZ7FT49PC7",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\": \"\",\n  \"description\": \"\",\n  \"balance\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "aDd6ya4ChpwBs64x4apuN",
+          "name": "AccountsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/accounts/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "2bl1QxwJqeEMYEOLVPC3j",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "PEagkFo6rjjLFxygxDsyO",
+      "name": "Cards",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "Y57gvjtemLte0068ttDMz",
+          "name": "CardsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/cards",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"type\": \"\",\n  \"card_name\": \"\",\n  \"card_number\": \"\",\n  \"balance\": \"\",\n  \"credit_limit\": \"\",\n  \"accountId\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "eI6MDwYWoGQfRK9mcqn2w",
+          "name": "CardsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/cards/:accountId",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "pYPxjwe8xCOGTg62Y2Ccw",
+                "name": "accountId",
+                "value": "",
+                "description": "Unique identifier of the account to which the card belongs",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "ujZ33WS32NMWL9OPlSDaX",
+          "name": "CardsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/cards/:accountId/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "8Z4HDk6iZljPZCXgVFTEG",
+                "name": "id",
+                "value": "",
+                "description": "Unique identifier of the card to be deleted",
+                "enabled": true,
+                "type": "path"
+              },
+              {
+                "uid": "AimTvwRb1GjHWtuY9m4GH",
+                "name": "accountId",
+                "value": "",
+                "description": "Unique identifier of the account to which the card belongs",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "QRT0L9HYSas2hdpQytPDA",
+          "name": "CardsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/cards/:accountId/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "9y8VTZ8uYzG3Hzed37aUT",
+                "name": "id",
+                "value": "",
+                "description": "Unique identifier of the card to be deleted",
+                "enabled": true,
+                "type": "path"
+              },
+              {
+                "uid": "YoFlfczNOebDKIC5VrNI2",
+                "name": "accountId",
+                "value": "",
+                "description": "Unique identifier of the account to which the card belongs",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"type\": \"\",\n  \"card_name\": \"\",\n  \"card_number\": \"\",\n  \"balance\": \"\",\n  \"credit_limit\": \"\",\n  \"accountId\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "f5xjpzUN0wXPZQkvpZ7Ii",
+          "name": "CardsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/cards/:accountId/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "gKlzVAvKYZF8zRph1H1hB",
+                "name": "id",
+                "value": "",
+                "description": "Unique identifier of the card to be deleted",
+                "enabled": true,
+                "type": "path"
+              },
+              {
+                "uid": "kdUmDIGzaxaMn9oAa84Vz",
+                "name": "accountId",
+                "value": "",
+                "description": "Unique identifier of the account to which the card belongs",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "NeC4wfdYa4s45Ee23F6ms",
+      "name": "UPIs",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "nkAyMKnRAGsrY1DhzEipQ",
+          "name": "UpisController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/upis",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"upi\": \"\",\n  \"account_id\": \"\",\n  \"is_delete\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "wavQSKjXPX4KZVp01KtGk",
+          "name": "UpisController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/upis/:accountId",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "95PcnBauDILRBetKHJqr2",
+                "name": "accountId",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "r4vQMqzBSixhhMXeEU25I",
+          "name": "UpisController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/upis/:accountId/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "ppeMIOOz7Qb91Xzz8P1KR",
+                "name": "accountId",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              },
+              {
+                "uid": "7dQE6XOCxA8mP18Z42jet",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "krCwhGo8JbARnFo9apwUs",
+          "name": "UpisController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/upis/:accountId/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "j7VcLnqkgrbVqFwMtsvIW",
+                "name": "accountId",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              },
+              {
+                "uid": "DABsBpkxMUD9xPoGT5iIB",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"upi\": \"\",\n  \"is_delete\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "8b9M4UW07f40aKKfLGTS0",
+          "name": "UpisController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/upis/:accountId/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "R2QEMVdKPT2XApAqkSZRp",
+                "name": "accountId",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              },
+              {
+                "uid": "MRtPqpJGUbXd75T39pQfW",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "noCadLPltujp9DgI5rAlS",
+      "name": "Categories",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "0LOFbLIRXhGipOuymgXCQ",
+          "name": "CategoriesController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/categories",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\": \"\",\n  \"description\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "YikP7D8ZiBViQs0cNXbnR",
+          "name": "CategoriesController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/categories",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "QsbxjafUBo69gUsl5nQ5o",
+          "name": "CategoriesController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/categories/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "cdAZ8FY06vlhy0N9rQP5E",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "zENgAjdygTIYUXRXgzQxX",
+          "name": "CategoriesController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/categories/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "enOuLadGpkcz9MlcISAP1",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\": \"\",\n  \"description\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "j9jCh7n6NwZ1iwu6GKc96",
+          "name": "CategoriesController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/categories/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "tlQ95EvXEw3f6dyVS8k6p",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "3QYFfTjGAZRjYa7QMGU8d",
+      "name": "Notifications",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "hmUw4CeWbYLtsRXd0cGFn",
+          "name": "NotificationsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/notifications",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "DcUIB608kI8Mbgbr6UdHP",
+          "name": "NotificationsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/notifications",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "U55Uo0eNxtRKNibJaJ830",
+          "name": "NotificationsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/notifications/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "QERuZ1fOz4YfJTXiwqHZx",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "csvSWHUzdEbJrwOHZWtkr",
+          "name": "NotificationsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/notifications/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "bChccz2sVNbZME6TfFALi",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "5BDY4vL0JfEW0OMPWSCv6",
+          "name": "NotificationsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/notifications/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "pZNNDvLwuHtq4YDE74fMB",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "CweQ7Ud2rdMm3vdvbE5vq",
+      "name": "Files",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "ZCmFw0G4IiZ8QzZ7mbjmt",
+          "name": "FilesController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/files",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "ui9uyAzw6fNyl97CEbCqy",
+          "name": "FilesController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/files",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "OJmwmMXvy7fxvFJVHbgjl",
+          "name": "FilesController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/files/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "UtNssnk5hokT6QR1uUcYX",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "a6LtBo4wx7EliohC6VQPU",
+          "name": "FilesController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/files/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "g0BWNY93jcD0q05zQQITZ",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "dNAenKRUtsFkkD65OwsHY",
+          "name": "FilesController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/files/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "vmvDvCDezhukQ9qnaOAje",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "vzUrEi6rJRNLcyKpt1uR0",
+      "name": "Comments",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "YYe3rKbmauYWe8tV92Wif",
+          "name": "CommentsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/comments",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"comment\": \"\",\n  \"transactionId\": \"\",\n  \"is_edited\": \"\",\n  \"is_deleted\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "Q3qkeesgLEL9mOG3qYBE1",
+          "name": "CommentsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/comments",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "PyA5vedhV8E6XHCdaJNOA",
+          "name": "CommentsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/comments/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "efh9ROETLIgxiF7UAfpaa",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "IpRhqshfnM0DyKGQPBo3V",
+          "name": "CommentsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/comments/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "QFukhcqaLneD17pmezrEp",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"comment\": \"\",\n  \"transactionId\": \"\",\n  \"is_edited\": \"\",\n  \"is_deleted\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "JRyz4K56s0bk0VlEN5jEn",
+          "name": "CommentsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/comments/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "8UOewGRQiDVYCEOxLpJfU",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "5QRdLlLJWsDNccbRtnjIg",
+      "name": "Splits",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "HRPQUzI1AUQuxx22QxPBH",
+          "name": "SplitsController_create",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/splits",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "1Aulkp3vBWnLtbNozhmTY",
+          "name": "SplitsController_findAll",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/splits",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "oz7jT458Fq1RYx1YSryR4",
+          "name": "SplitsController_findOne",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/splits/:id",
+            "method": "GET",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "IIhS9iFiXNYSAJMUpgupC",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        },
+        {
+          "uid": "2bhqkAkiwXSFhl7hPtUfO",
+          "name": "SplitsController_update",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/splits/:id",
+            "method": "PATCH",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "xlkzrVhfUdPfHwzXRnMNG",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "json",
+              "json": "{}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 4
+        },
+        {
+          "uid": "lGFTwJHwuzGPT0cFLV54L",
+          "name": "SplitsController_remove",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/splits/:id",
+            "method": "DELETE",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [
+              {
+                "uid": "v0J5s3RePFm9Ab2qbBrib",
+                "name": "id",
+                "value": "",
+                "description": "",
+                "enabled": true,
+                "type": "path"
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 5
+        }
+      ]
+    },
+    {
+      "uid": "MkEC5qoARa1yo7ZQpNDSq",
+      "name": "Auth",
+      "type": "folder",
+      "items": [
+        {
+          "uid": "uEvK4a1zp3cqaUfdEVwJr",
+          "name": "AuthController_login",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/auth/login",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"identifier\": \"\",\n  \"password\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 1
+        },
+        {
+          "uid": "06spp4HOET17rxYDcuPiB",
+          "name": "AuthController_refresh",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/auth/refresh-token",
+            "method": "POST",
+            "auth": {
+              "mode": "none",
+              "basic": null,
+              "bearer": null,
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"refreshToken\": \"\"\n}",
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 2
+        },
+        {
+          "uid": "FVGPjESNz4vt37CIqD0IW",
+          "name": "AuthController_renew",
+          "type": "http-request",
+          "request": {
+            "url": "{{baseUrl}}/api/v1/auth/renew",
+            "method": "POST",
+            "auth": {
+              "mode": "bearer",
+              "basic": null,
+              "bearer": {
+                "token": "{{token}}"
+              },
+              "digest": null
+            },
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "json": null,
+              "text": null,
+              "xml": null,
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {
+              "res": null
+            }
+          },
+          "seq": 3
+        }
+      ]
+    }
+  ],
+  "environments": []
+}
