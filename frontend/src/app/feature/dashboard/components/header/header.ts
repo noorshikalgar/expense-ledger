@@ -31,7 +31,7 @@ export class Header {
   router = inject(Router);
   authService = inject(AuthService);  
   
-  userInfo = this.userService.getUserInfo();
+  userInfo = this.userService.getLocalUserInfo();
   userName: string = `${this.userInfo.first_name} ${this.userInfo.last_name}`;
   initials: string = this.getUserNameInitials(); // Initials
 
