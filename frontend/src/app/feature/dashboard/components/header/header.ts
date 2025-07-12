@@ -38,14 +38,18 @@ export class Header {
   isLoggedIn: boolean = this.userService.isUserLoggedIn(); // Simulate login state
   profileMenuItems: MenuItem[] = [
     {
+      label: 'Hello, ' + this.userName,
+      icon: 'pi pi-person'
+    },
+    {
+      separator: true,
+    },
+    {
       label: 'Profile',
       icon: 'pi pi-user',
       command: () => {
         this.router.navigate(['/profile']); // Navigate to profile page
       },
-    },
-    {
-      separator: true,
     },
     {
       label: 'Logout',
