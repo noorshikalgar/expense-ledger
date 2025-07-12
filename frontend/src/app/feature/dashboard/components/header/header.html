@@ -1,0 +1,42 @@
+<p-menubar [model]="[]" class="app-header">
+  <ng-template pTemplate="start">
+    <div class="flex items-center gap-3">
+        <i class="pi pi-indian-rupee" style="font-size: 2rem; color: green; font-weight: 900;"></i>
+        <span class="app-title font-bold text-xl">Expense Ledger</span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <!-- User Profile Section -->
+    <div class="profile-section cursor-pointer" *ngIf="isLoggedIn">
+      <!-- Using p-avatar for the profile icon/initials -->
+      <p-avatar
+        [label]="initials"
+        styleClass="mr-2"
+        size="large"
+        shape="circle"
+        (click)="toggleProfileMenu($event)"
+        class="profile-avatar"
+        pTooltip="Click for options"
+        tooltipPosition="bottom"
+      ></p-avatar>
+
+      <!-- Optionally display full name next to avatar -->
+      <!-- <span class="profile-name" (click)="toggleProfileMenu($event)">
+        {{ userName }}
+      </span> -->
+
+      <!-- p-menu for dropdown options -->
+      <p-menu #profileMenu [model]="profileMenuItems" [popup]="true"></p-menu>
+    </div>
+
+    <!-- Or a login button if not logged in -->
+    <p-button
+      *ngIf="!isLoggedIn"
+      label="Login"
+      icon="pi pi-sign-in"
+      styleClass="p-button-outlined"
+      (click)="router.navigate(['/login'])"
+    ></p-button>
+  </ng-template>
+</p-menubar>
