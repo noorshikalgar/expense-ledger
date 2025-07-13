@@ -37,6 +37,7 @@ export class CreateUserDto {
   @ApiProperty({
     required: false
   })
+  @IsOptional()
   @IsBoolean()
   is_deleted?: boolean;
 }

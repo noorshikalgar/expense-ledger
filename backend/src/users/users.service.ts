@@ -37,7 +37,7 @@ export class UsersService {
 
     try{
       const new_user = await this.userRepository.save(user);
-      return ResponseHelper.success('User created successfully.', new_user);
+      return ResponseHelper.success('User created successfully.', {id: new_user.id});
     } catch (error) {
       return ResponseHelper.error('User not created.', [{ error }]);
     }
@@ -47,10 +47,10 @@ export class UsersService {
   //   return `This action returns all users`;
   // }
 
-  async findOne(id: string) {
+  async findOne(id: string, relations: string[] = []) {
     try {
       const user = await this.userRepository.findOneOrFail({
-        relations: ['accounts', 'transactions', 'categories'],
+        relations,
         where: { id } });
       return ResponseHelper.success('User found successfully.', user);
     } catch (error) {

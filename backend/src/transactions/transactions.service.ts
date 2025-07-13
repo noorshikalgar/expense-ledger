@@ -33,7 +33,12 @@ export class TransactionsService {
   async create(createTransactionDto: CreateTransactionDto, user: User) {
     const cleanDTO = this.cleanTransactionsDTO(createTransactionDto);
     try {
-      const getUserResponse = await this.usersService.findOne(user.id);
+      const getUserResponse = await this.usersService.findOne(user.id, [
+        'accounts',
+        'categories',
+        'cards',
+        'upis',
+      ]);
       const getUser: User = getUserResponse['data'];
       const account = getUser.accounts.find(
         (account) => account.id === createTransactionDto.account_id,
