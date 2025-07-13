@@ -1,0 +1,33 @@
+<div class="summary-container p-5 w-full">
+  <div class="flex w-full justify-center items-center gap-5">
+    <p-card class="w-full md:w-1/3" header="Monthly Expenses">
+      <p>
+        Total monthly expenses:
+        <span class="font-bold text-red-500">$1,500.00</span>
+      </p>
+      <p>Last updated: <span class="text-500">July 13, 2025</span></p>
+      <ng-template pTemplate="footer">
+        <p-button label="View Details" icon="pi pi-file"></p-button>
+      </ng-template>
+    </p-card>
+
+    <p-card class="w-full md:w-1/3" header="Ongoing EMIs">
+      <p>Next EMI due: <span class="font-bold text-blue-500">$550.00</span></p>
+      <p>Due date: <span class="text-500">July 20, 2025</span></p>
+      <ng-template pTemplate="footer">
+        <p-button label="View Schedule" icon="pi pi-calendar"></p-button>
+      </ng-template>
+    </p-card>
+
+    <p-card class="w-full md:w-1/3" header="Savings Goal">
+      <p>
+        Current savings:
+        <span class="font-bold text-green-500">$12,000.00</span>
+      </p>
+      <p>Goal: <span class="text-500">$20,000.00 (by Dec 2025)</span></p>
+      <ng-template pTemplate="footer">
+        <p-button label="Track Progress" icon="pi pi-chart-line"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

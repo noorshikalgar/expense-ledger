@@ -1,0 +1,12 @@
+<div class="app-container">
+  <ng-container *ngIf="loading$ | async">
+      <div class="loading-overlay flex w-full h-[100vh] justify-center items-center">
+        <div class="spinner">
+          <i class="pi pi-spin pi-spinner" style="font-size: 3rem; color: green; font-weight: 900;"></i>
+        </div>
+      </div>
+    </ng-container>
+  <div class="app-body" *ngIf="!(loading$ | async)">
+      <router-outlet />
+  </div>
+</div>
