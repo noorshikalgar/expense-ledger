@@ -1,8 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { LoadingService } from './core/services/loading.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { UserService } from './core/services/user.service';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +24,8 @@ export class App {
 
   loadingService = inject(LoadingService);
   router = inject(Router);
-  
+  authService = inject(AuthService);
+
   loading$ = this.loadingService.loading$;
   private destroy$ = new Subject<void>();
 
@@ -25,7 +35,7 @@ export class App {
 
   ngOnInit() {
     console.log('App component ngOnInit called');
-        this.router.events
+    this.router.events
       .pipe(
         // Filter for specific router events
         filter(
@@ -56,5 +66,11 @@ export class App {
           }
         }
       });
+
+    if (this.authService.getAccessToken()) {
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

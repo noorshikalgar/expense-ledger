@@ -28,5 +28,9 @@ export const routes: Routes = [
       import('./feature/dashboard/pages/dashboard-page/dashboard-page').then(
         (m) => m.DashboardPage
       ),
+    loadChildren: () =>
+      import('./feature/dashboard/dashboard.routes').then(
+        (m) => m.dashboardRoutes
+      ),
   },
 ];

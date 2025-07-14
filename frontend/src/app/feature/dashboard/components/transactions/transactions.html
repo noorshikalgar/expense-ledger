@@ -1,0 +1,123 @@
+<div>
+  <div class="card">
+    <!-- Access the signal's value by calling it like a function: transactions() -->
+    <p-table
+      [value]="transactions()"
+      [paginator]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      styleClass="p-datatable-gridlines p-datatable-sm"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+          <th pSortableColumn="transaction_date">
+            Date <p-sortIcon field="transaction_date"></p-sortIcon>
+          </th>
+          <th pSortableColumn="description">
+            Description <p-sortIcon field="description"></p-sortIcon>
+          </th>
+          <th pSortableColumn="category.name">
+            Category <p-sortIcon field="category.name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="type">
+            Type <p-sortIcon field="type"></p-sortIcon>
+          </th>
+          <th pSortableColumn="nature">
+            Nature <p-sortIcon field="nature"></p-sortIcon>
+          </th>
+          <th pSortableColumn="amount" class="text-right">
+            Amount <p-sortIcon field="amount"></p-sortIcon>
+          </th>
+          <th>Source/Destination</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-transaction>
+        <tr>
+          <td>
+            <a
+              [routerLink]="['/dashboard/transactions', transaction.id]"
+              class="text-blue-600 hover:underline cursor-pointer font-medium"
+              pTooltip="View Details"
+              tooltipPosition="right"
+            >
+              {{ transaction.id.substring(0, 8) }}...
+              <!-- Display first 8 chars + ellipsis -->
+            </a>
+          </td>
+          <td>{{ transaction.transaction_date | date : "mediumDate" }}</td>
+          <td>{{ transaction.description }}</td>
+          <td>{{ transaction.category?.name || "N/A" }}</td>
+          <td>
+            <p-tag
+              [value]="transaction.type | titlecase"
+              [severity]="getSeverity(transaction.type)"
+            ></p-tag>
+          </td>
+          <td>
+            <p-tag
+              [value]="transaction.nature | titlecase"
+              [severity]="
+                transaction.nature === 'split' ? 'warning' : 'primary'
+              "
+            ></p-tag>
+          </td>
+          <td
+            class="text-right font-semibold"
+            [ngClass]="{
+              'text-green-600': transaction.type === 'income',
+              'text-red-600': transaction.type === 'expense'
+            }"
+          >
+            {{ transaction.type === "expense" ? "-" : ""
+            }}{{ transaction.amount | currency : "INR" : "symbol" : "1.2-2" }}
+          </td>
+          <td>
+            <ng-container *ngIf="transaction.account">
+              <span class="font-medium">{{ transaction.account.name }}</span>
+            </ng-container>
+            <ng-container *ngIf="transaction.card">
+              <span class="font-medium"
+                >{{ transaction.card.card_name }} (****
+                {{ transaction.card.card_number }})</span
+              >
+            </ng-container>
+            <ng-container *ngIf="transaction.upi">
+              <span class="font-medium">{{ transaction.upi.upi_id }}</span>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                !transaction.account && !transaction.card && !transaction.upi
+              "
+            >
+              N/A
+            </ng-container>
+          </td>
+          <td>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-info-circle"
+              class="p-button-rounded p-button-text p-button-sm"
+              (click)="viewTransactionDetails(transaction)"
+              pTooltip="View Details"
+              tooltipPosition="left"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <!-- Use isLoading() to conditionally show a loading message -->
+        <tr *ngIf="isLoading()">
+          <td colspan="8" class="text-center">Loading transactions...</td>
+        </tr>
+        <tr *ngIf="!isLoading() && transactions().length === 0">
+          <td colspan="8" class="text-center">No transactions found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
