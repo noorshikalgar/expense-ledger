@@ -15,8 +15,8 @@ export class ApiWrapper {
     console.log('ApiWrapper initialized with API URL:', this.apiUrl);
   }
 
-  get<T>(url: string) {
-    return this.httpClient.get<T>(`${this.apiUrl}${url}`);
+  get<T>(url: string, queryParams?: any) {
+    return this.httpClient.get<T>(`${this.apiUrl}${url}?${this.queryString(queryParams ? queryParams : {})}`);
   }
 
   post<T>(url: string, body: any) {
@@ -29,5 +29,11 @@ export class ApiWrapper {
 
   delete<T>(url: string) {
     return this.httpClient.delete<T>(`${this.apiUrl}${url}`);
+  }
+
+  private queryString(params: any): string {
+    return Object.keys(params)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+      .join('&');
   }
 }

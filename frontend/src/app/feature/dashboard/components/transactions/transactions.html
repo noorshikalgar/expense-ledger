@@ -1,15 +1,76 @@
-<div>
+<div class="transaction-container">
+  <div class="transaction-header flex justify-between items-center mb-4">
+    <div>
+      <h2 class="text-2xl font-semibold mb-4">Transactions</h2>
+    </div>
+    <div>
+      <p-button label="Add Transaction" icon="pi pi-plus"></p-button>
+    </div>
+  </div>
+
+  <div class="transaction-filters mb-4">
+    <div class="filters-header mb-2">
+      <p>Apply Filters</p>
+    </div>
+    <div class="flex items-end gap-10 items-center">
+      <div class="flex gap-10 flex-row items-end justify-start">
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="searchQuery"
+          placeholder="Search transactions..."
+          class="w-[450px]"
+          (input)="onSearch('search')"
+          pTooltip="Search by ID, description, or category"
+          tooltipPosition="top"
+        />
+        <div class="flex-auto">
+          <label for="icondisplay" class="font-bold block mb-2">
+            Start Date
+          </label>
+          <p-datepicker
+            [(ngModel)]="startDate"
+            [iconDisplay]="'input'"
+            [showIcon]="true"
+            inputId="icondisplay"
+            (onSelect)="onSearch('startDate')"
+          />
+        </div>
+        <div class="flex-auto">
+          <label for="icondisplay" class="font-bold block mb-2">
+            End Date
+          </label>
+          <p-datepicker
+            [(ngModel)]="endDate"
+            [iconDisplay]="'input'"
+            [showIcon]="true"
+            inputId="icondisplay"
+            (onSelect)="onSearch('endDate')"
+          />
+        </div>
+      </div>
+      <p-button
+        label="Refresh"
+        icon="pi pi-refresh"
+        class="p-button-secondary ml-2"
+        (click)="fetchTransactions()"
+        pTooltip="Refresh transactions"
+        tooltipPosition="top"
+      ></p-button>
+    </div>
+  </div>
+
   <div class="card">
     <!-- Access the signal's value by calling it like a function: transactions() -->
     <p-table
-      [value]="transactions()"
+      [value]="filteredTransactions()"
       [paginator]="true"
       [rows]="10"
       [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[10, 25, 50]"
-      styleClass="p-datatable-gridlines p-datatable-sm"
     >
+      <!-- styleClass="p-datatable-gridlines p-datatable-sm" -->
       <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
