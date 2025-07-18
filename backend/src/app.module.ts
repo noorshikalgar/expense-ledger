@@ -31,6 +31,7 @@ import { AuthModule } from './auth/auth.module';
       database: process.env.DATABASE_NAME,
       autoLoadEntities: true,
       synchronize: true,
+      logging: Boolean(process.env.TYPEORM_LOGGING) ?? false, // Enable logging for debugging
     }),
     UsersModule,
     TransactionsModule,

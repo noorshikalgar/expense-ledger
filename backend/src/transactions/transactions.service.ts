@@ -14,6 +14,7 @@ import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { Transaction } from './entities/transaction.entity';
 import { instanceToPlain } from 'class-transformer';
+import { TransactionFetchOptions } from './types/transaction.model';
 
 @Injectable()
 export class TransactionsService {
@@ -101,8 +102,22 @@ export class TransactionsService {
     // return 'This action adds a new transaction';
   }
 
-  async findAll(user: User) {
+  async findAll(user: User, options: TransactionFetchOptions) {
     try {
+      const page = options.page || 1;
+      const itemsPerPage = options.itemsPerPage || 10;
+      const offset = (page - 1) * itemsPerPage;
+
+      const extraWhere: any = {};
+      if (options.startDate) {
+        extraWhere.transaction_date = extraWhere.transaction_date || {};
+        extraWhere.transaction_date['$gte'] = options.startDate;
+      }
+      if (options.endDate) {
+        extraWhere.transaction_date = extraWhere.transaction_date || {};
+        extraWhere.transaction_date['$lte'] = options.endDate;
+      }
+
       const allTransactions = await this.transactionRepository.find({
         relations: [
           'category',
@@ -113,7 +128,10 @@ export class TransactionsService {
           'files',
           'comments',
         ],
-        where: { owner: { id: user.id } },
+        where: { owner: { id: user.id }, ...extraWhere },
+        skip: offset,
+        take: itemsPerPage,
+        order: { transaction_date: 'DESC' },
       });
       return ResponseHelper.success(
         'Fetched all transactions.',

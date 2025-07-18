@@ -7,11 +7,12 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
-import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { User } from 'src/users/entities/user.entity';
 import { GetUser } from 'src/auth/decorators/user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -35,9 +36,39 @@ export class TransactionsController {
     return this.transactionsService.create(createTransactionDto, user);
   }
 
+  @ApiQuery({
+    name: 'page',
+    required: false,
+    type: Number,
+    description: 'Page number for pagination',
+  })
+  @ApiQuery({
+    name: 'itemsPerPage',
+    required: false,
+    type: Number,
+    description: 'Number of items per page for pagination',
+  })
+  @ApiQuery({
+    name: 'startDate',
+    required: false,
+    type: Number,
+    description: 'Start date for filtering transactions',
+  })
+  @ApiQuery({
+    name: 'endDate',
+    required: false,
+    type: Number,
+    description: 'End date for filtering transactions',
+  })
   @Get()
-  findAll(@GetUser() user: User) {
-    return this.transactionsService.findAll(user);
+  findAll(
+    @GetUser() user: User,
+    @Query('page') page: number = 1,
+    @Query('itemsPerPage') itemsPerPage: number = 10,
+    @Query('startDate') startDate,
+    @Query('endDate') endDate,
+  ) {
+    return this.transactionsService.findAll(user, {page, itemsPerPage, startDate, endDate});
   }
 
   @Get(':id')
