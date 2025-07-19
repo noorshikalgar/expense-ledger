@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Inject, Input } from '@angular/core';
+import { Component, inject, Inject, Input, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -9,6 +9,7 @@ import { PasswordModule } from 'primeng/password';
 import { ApiWrapper } from '../../../../core/services/api.wrapper';
 import { AuthService } from '../../../../core/services/auth.service';
 import { UserService } from '../../../../core/services/user.service';
+import { MessageModule } from 'primeng/message';
 
 @Component({
   selector: 'app-login',
@@ -19,16 +20,19 @@ import { UserService } from '../../../../core/services/user.service';
     ButtonModule,
     InputTextModule,
     PasswordModule,
+    MessageModule,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
+  authService = inject(AuthService);
+
+  message = signal<{ type: string; content: string } | null>(null);
   loginForm: FormGroup = new FormGroup({
     identifier: new FormControl(''),
     password: new FormControl(''),
   });
-  authService = inject(AuthService);
   constructor(
     private router: Router,
     private apiWrapper: ApiWrapper,
@@ -44,6 +48,8 @@ export class Login {
   }
 
   onSubmit(event: any) {
+    // Reset message on form submission
+    this.message.set(null);
     console.log('Form submitted:', this.loginForm.value);
     event.preventDefault();
     this.apiWrapper.post('/auth/login', this.loginForm.value).subscribe({
@@ -52,8 +58,14 @@ export class Login {
         this.authService.setAuthTokens(response.data);
         this.router.navigate(['/dashboard']);
       },
-      error: (error) => {
+      error: ({error}: any) => {
         console.error('Login failed:', error);
+        this.message.set({
+          type: 'error',
+          content: `Registration failed - ${
+            error?.message ? error?.message : '--'
+          } . Please try again.`,
+        });
       },
     });
   }

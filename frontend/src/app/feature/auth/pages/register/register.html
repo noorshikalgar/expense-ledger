@@ -1,6 +1,9 @@
-<div class="register-container">
-  <div>
-    <p-card header="Register">
+<div class="register-container flex justify-center items-center h-screen dark:bg-gray-900">
+  <div class="flex flex-col w-[500px] p-3 gap-5 justify-center items-center h-screen ">
+    <ng-container *ngIf="message()">
+      <p-message closable [severity]="message()?.type">{{message()?.content}}</p-message>
+    </ng-container>
+    <p-card class="w-full" header="Register">
       <div class="flex flex-col gap-4 mt-5">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
           <div class="flex flex-col gap-2 mb-5">

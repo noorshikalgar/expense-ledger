@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { UserInfo } from '../types/user.interface';
 import { AuthService } from './auth.service';
 import { ApiWrapper } from './api.wrapper';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +60,7 @@ export class UserService {
       map((response: any) => response.data as UserInfo),
       catchError((error: any) => {
         console.error('User creation failed:', error);
-        return of(null); // Return null on error
+        return throwError(() => error) // Return null on error
       })
     );
   }
