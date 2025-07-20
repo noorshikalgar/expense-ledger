@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FormsModule } from '@angular/forms';
+import { TransactionSummary } from "../transaction-summary/transaction-summary";
 
 @Component({
   selector: 'app-transactions',
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     InputNumberModule,
     FormsModule,
     DatePickerModule,
-  ],
+    TransactionSummary
+],
   templateUrl: './transactions.html',
   styleUrl: './transactions.scss',
 })

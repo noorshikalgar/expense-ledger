@@ -1,4 +1,7 @@
 .dashboard-sidebar {
-    height: calc(100vh - 65px); /* Adjust based on header height */
-    // overflow-y: auto; /* Enable scrolling if content overflows */
+  height: calc(100vh - 70px);
+}
+.dashboard-main {
+  overflow-y: scroll;
+  height: calc(100vh - 100px);
 }

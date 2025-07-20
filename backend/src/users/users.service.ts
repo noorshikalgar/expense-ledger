@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { ResponseHelper } from 'src/common/helpers/response.helper';
@@ -10,6 +10,7 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
+  logger = new Logger(UsersService.name);
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
@@ -54,6 +55,7 @@ export class UsersService {
         where: { id } });
       return ResponseHelper.success('User found successfully.', user);
     } catch (error) {
+      this.logger.error('User not found.', error);
       return ResponseHelper.error('User not found.', [{ error }]);
     }
   }

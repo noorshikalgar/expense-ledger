@@ -1,1 +1,29 @@
-<p>transaction-summary works!</p>
+<div class="transaction-summary-container border-b-1 border-b-gray-300 mb-5">
+  <div class="transaction-summary-header mb-5 flex">
+    <h2 class="text-lg">Summary for</h2> <span class="border rounded-xl border-1 text-green-300 py-1 px-2 font-bold ml-2">{{ month }}</span>
+  </div>
+  <div class="summary-details flex flex-row items-center mb-4 gap-5">
+    <div class="w-[250px] border rounded border-1 p-3">
+      <span>Total Income</span>
+      <h2 class="font-bold text-green-400 text-2xl">
+        {{ totalIncome | currency : "INR" : "symbol" : "1.2-2" }}
+      </h2>
+    </div>
+    <div class="w-[250px] border rounded border-1 p-3">
+      <span>Total Expense</span>
+      <h2 class="font-bold text-red-400 text-2xl">
+        {{ totalExpense | currency : "INR" : "symbol" : "1.2-2" }}
+      </h2>
+    </div>
+    <div class="w-[250px] border rounded border-1 p-3">
+      <span>Total Balance</span>
+      <h2 class="font-bold text-2xl">
+        {{ balance | currency : "INR" : "symbol" : "1.2-2" }}
+      </h2>
+    </div>
+  </div>
+  <div class="summary-chart">
+    <!-- Placeholder for chart component -->
+    <!-- <p-chart type="bar" [data]="chartData"></p-chart> -->
+  </div>
+</div>

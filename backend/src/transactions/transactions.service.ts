@@ -36,10 +36,9 @@ export class TransactionsService {
     try {
       const getUserResponse = await this.usersService.findOne(user.id, [
         'accounts',
-        'categories',
-        'cards',
-        'upis',
+        'categories'
       ]);
+      this.logger.log("Accounts: ", JSON.stringify(getUserResponse), user, JSON.stringify(getUserResponse['data']));
       const getUser: User = getUserResponse['data'];
       const account = getUser.accounts.find(
         (account) => account.id === createTransactionDto.account_id,
