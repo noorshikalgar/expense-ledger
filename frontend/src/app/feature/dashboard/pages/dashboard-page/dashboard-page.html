@@ -4,27 +4,22 @@
   </div>
   <div class="dashboard-content w-full flex flex-row gap-2">
     <div class="dashboard-sidebar w-[250px] bg-gray-100 dark:bg-[#121212]">
-      <div class="px-5 py-3">
-        <h2 class="text-xl font-bold">Sidebar Nav</h2>
-      </div>
-      <div class="sidebar-content flex flex-col gap-2">
-        <ul class="flex flex-col space-y-1">
-          <li
-            *ngFor="let link of sidebarLinks"
-            [routerLink]="[link.route]"
-            [routerLinkActiveOptions]="{ exact: link.route === '/dashboard' }"
-            routerLinkActive="bg-gray-400 text-white"
-            class="nav-item cursor-pointer"
-          >
-            <a
-              pRipple
-              class="flex items-center p-3 hover:bg-gray-400 hover:text-white transition-colors duration-200"
-            >
-              <i [class]="link.icon" class="mr-3 text-lg"></i>
-              <span class="text-base font-medium">{{ link.label }}</span>
-            </a>
-          </li>
-        </ul>
+      <div class="sidebar-content flex flex-col gap-2 mt-3">
+        <nav>
+          <ul>
+            <li *ngFor="let link of sidebarLinks" class="mb-1">
+              <a
+                [routerLink]="[link.route]"
+                routerLinkActive="bg-gray-800 border-r-2 border-green-500 text-green-500 font-semibold"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="flex items-center p-3 hover:bg-gray-800 transition-colors"
+              >
+                <i class="{{ link.icon }} mr-3 text-lg"></i>
+                <span>{{ link.label }}</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
     <div class="dashboard-main w-full p-5">
