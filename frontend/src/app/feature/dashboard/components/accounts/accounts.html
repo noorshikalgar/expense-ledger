@@ -1,0 +1,154 @@
+<div class="accounts-container w-full">
+  <div class="accounts-header mb-5">
+    <h3 class="font-bold text-xl">Accounts</h3>
+  </div>
+
+  <div></div>
+
+  <div>
+    <div class="card">
+      <!-- Access the signal's value by calling it like a function: transactions() -->
+      <p-table
+        [value]="accounts()"
+        [paginator]="accounts().length > 10"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50]"
+      >
+        <!-- styleClass="p-datatable-gridlines p-datatable-sm" -->
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="id">
+              ID <p-sortIcon field="id"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="description">
+              Description <p-sortIcon field="description"></p-sortIcon>
+            </th>
+            <th pSortableColumn="balance">
+              Balance <p-sortIcon field="balance"></p-sortIcon>
+            </th>
+            <th pSortableColumn="cards">
+              Cards <p-sortIcon field="cards"></p-sortIcon>
+            </th>
+            <th pSortableColumn="upis">
+              Upis <p-sortIcon field="upis"></p-sortIcon>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-account>
+          <tr>
+            <td>
+              <a
+                [routerLink]="['/dashboard/transactions', account.id]"
+                class="text-blue-600 hover:underline cursor-pointer font-medium"
+                pTooltip="View Details"
+                tooltipPosition="right"
+              >
+                {{ account.id.substring(0, 8) }}...
+                <!-- Display first 8 chars + ellipsis -->
+              </a>
+            </td>
+            <td>{{ account.name }}</td>
+            <td>{{ account.description }}</td>
+            <td>
+              {{ account.balance | currency : "INR" : "symbol" : "1.2-2" }}
+            </td>
+            <td>
+              <p-button
+                (onClick)="openDrawer('cards', account)"
+                label="{{ account.cards.length + ' Cards' }}"
+                link
+              />
+            </td>
+            <td>
+              <p-button
+                (onClick)="openDrawer('upis', account)"
+                label="{{ account.upis.length + ' Upis' }}"
+                link
+              />
+            </td>
+            <td>
+              <button
+                pButton
+                pRipple
+                icon="pi pi-info-circle"
+                class="p-button-rounded p-button-text p-button-sm"
+                (click)="viewAccountTransactions(account)"
+                pTooltip="View Details"
+                tooltipPosition="left"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <!-- Use isLoading() to conditionally show a loading message -->
+          <tr *ngIf="isLoading()">
+            <td colspan="8" class="text-center">Loading transactions...</td>
+          </tr>
+          <tr *ngIf="!isLoading() && accounts().length === 0">
+            <td colspan="8" class="text-center">No transactions found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <p-drawer
+      styleClass="!w-full md:!w-80 lg:!w-[30rem]"
+      [header]="drawerType() | uppercase"
+      [(visible)]="showDrawer"
+      position="right"
+    >
+      <div class="accounts-drawer">
+        <ng-container *ngIf="drawerType() === 'cards'">
+          <div>
+            <p-card
+              class="border border-gray-300 dark:border-gray-500 mb-4"
+              *ngFor="let card of selectedAccount()?.cards"
+              [header]="card.card_name"
+            >
+              <p class="m-0">
+                <span class="font-bold">No: </span>**** **** **** {{ card.card_number }}
+              </p>
+              <p class="m-0">
+                <span class="font-bold">Type: </span>{{ card.type }}
+              </p>
+              <p class="m-0" *ngIf="card.type === 'credit'">
+                <span class="font-bold">Balance: </span
+                >{{ card.balance | currency : "INR" : "symbol" : "1.2-2" }}
+              </p>
+              <p class="m-0" *ngIf="card.type === 'credit'">
+                <span class="font-bold">Credit Limit: </span
+                >{{ card.credit_limit | currency : "INR" : "symbol" : "1.2-2" }}
+              </p>
+              <p class="m-0" *ngIf="card.type === 'credit'">
+                <span class="font-bold">Credit Utilized: </span>
+                {{ getCreditUtilized(card).creditUtilized }}
+                (<p-tag
+                  [severity]="getCreditUtilized(card).severity"
+                  value="{{
+                    getCreditUtilized(card).creditUtilizedPercentage
+                  }}%"
+                />)
+              </p>
+            </p-card>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="drawerType() === 'upis'">
+          <div>
+            <p-card
+              *ngFor="let upi of selectedAccount()?.upis"
+              [header]="upi.upi"
+            >
+            </p-card>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="drawerType() === 'upis'"></ng-container>
+      </div>
+    </p-drawer>
+  </div>
+</div>

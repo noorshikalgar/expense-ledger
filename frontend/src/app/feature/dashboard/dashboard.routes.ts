@@ -1,12 +1,10 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 export const dashboardRoutes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/dashboard/dashboard').then(
-        (m) => m.Dashboard
-      ),
+      import('./components/dashboard/dashboard').then((m) => m.Dashboard),
   },
   {
     path: 'transactions',
@@ -14,5 +12,10 @@ export const dashboardRoutes: Routes = [
       import('./components/transactions/transactions').then(
         (m) => m.Transactions
       ),
-  }
+  },
+  {
+    path: 'accounts',
+    loadComponent: () =>
+      import('./components/accounts/accounts').then((m) => m.Accounts),
+  },
 ];

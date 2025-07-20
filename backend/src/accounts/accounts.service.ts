@@ -30,10 +30,10 @@ export class AccountsService {
     }
   }
 
-  async findAll(user: User) {
+  async findAll(user: User, relations: string[] = ['cards', 'upis']) {
     try {
       const all_accounts = await this.accountRepository.find({
-        relations: ['owner', 'cards', 'upis', 'transactions'],
+        relations,
         where: { owner: { id: user.id }, is_deleted: false },
       });
       return ResponseHelper.success('Found all accounts.', all_accounts);
@@ -42,10 +42,10 @@ export class AccountsService {
     }
   }
 
-  async findOne(id: string, user: User) {
+  async findOne(id: string, user: User, relations: string[] = []) {
     try {
       const account = await this.accountRepository.findOneOrFail({
-        relations: ['owner', 'cards', 'upis', 'transactions'],
+        relations,
         where: { id: id, owner: { id: user.id }, is_deleted: false },
       });
       return ResponseHelper.success('Found a single account.', account);
@@ -73,10 +73,10 @@ export class AccountsService {
     // return `This action updates a #${id} account`;
   }
 
-  async remove(id: string, user: User) {
+  async remove(id: string, user: User, relations: string[] = []) {
     try {
       const account = await this.accountRepository.findOneOrFail({
-        relations: ['owner', 'cards', 'upis', 'transactions'],
+        relations,
         where: { id: id, owner: { id: user.id }, is_deleted: false },
       });
       const update_account = { ...account, is_deleted: true };

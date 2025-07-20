@@ -21,7 +21,7 @@ export class DashboardPage {
   sidebarLinks = [
     { label: 'Dashboard', icon: 'pi pi-th-large', route: '/dashboard' },
     { label: 'Transactions', icon: 'pi pi-list', route: '/dashboard/transactions' },
-    { label: 'Accounts', icon: 'pi pi-wallet', route: '/accounts' },
+    { label: 'Accounts', icon: 'pi pi-wallet', route: '/dashboard/accounts' },
     { label: 'Cards', icon: 'pi pi-credit-card', route: '/cards' },
     { label: 'UPIs', icon: 'pi pi-qrcode', route: '/upis' },
     { label: 'Splits', icon: 'pi pi-share-alt', route: '/splits' },
