@@ -104,4 +104,14 @@ export class Accounts {
       severity: '',
     }; // Return 0 if not a credit card
   }
+
+    // Helper to determine text color for utilization
+  getUtilizationColor(percentage: number): string {
+    if (percentage > 80) {
+      return 'text-red-400 font-semibold';
+    } else if (percentage > 50) {
+      return 'text-orange-400';
+    }
+    return 'text-green-400';
+  }
 }

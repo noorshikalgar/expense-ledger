@@ -103,16 +103,17 @@
       [(visible)]="showDrawer"
       position="right"
     >
-      <div class="accounts-drawer">
+      <div class="accounts-drawer border-t-1 pt-5">
         <ng-container *ngIf="drawerType() === 'cards'">
-          <div>
+          <!-- <div>
             <p-card
               class="border border-gray-300 dark:border-gray-500 mb-4"
               *ngFor="let card of selectedAccount()?.cards"
               [header]="card.card_name"
             >
               <p class="m-0">
-                <span class="font-bold">No: </span>**** **** **** {{ card.card_number }}
+                <span class="font-bold">No: </span>**** **** ****
+                {{ card.card_number }}
               </p>
               <p class="m-0">
                 <span class="font-bold">Type: </span>{{ card.type }}
@@ -136,15 +137,48 @@
                 />)
               </p>
             </p-card>
-          </div>
+          </div> -->
+          <div
+          *ngFor="let card of selectedAccount()?.cards"
+          class="mb-6 p-4 rounded-lg bg-gray-800 border border-gray-700 shadow-lg"
+        >
+          <p class="font-semibold text-lg mb-2">Credit Card</p>
+          <p class="text-gray-300 mb-1">
+            <span class="font-medium">No: </span> **** **** **** {{ card.card_number }}
+          </p>
+          <p class="text-gray-300 mb-1">
+            <span class="font-medium">Type: </span> {{ card.type }}
+          </p>
+          <p class="text-gray-300 mb-1">
+            <span class="font-medium">Balance: </span>
+            <span class="text-green-400">₹{{ card.balance | number : "1.2-2" }}</span>
+          </p>
+          <p class="text-gray-300 mb-1">
+            <span class="font-medium">Credit Limit:</span>
+            ₹{{ card.credit_limit | number : "1.2-2" }}
+          </p>
+          <p class="text-gray-300">
+            <span class="font-medium">Credit Utilized: </span>
+            ₹{{ getCreditUtilized(card).creditUtilized }}
+            (<span [ngClass]="getUtilizationColor(getCreditUtilized(card).creditUtilizedPercentage)"
+              >{{getCreditUtilized(card).creditUtilizedPercentage}}%</span
+            >)
+          </p>
+        </div>
+        <div *ngIf="selectedAccount()?.cards?.length === 0" class="text-center text-gray-500 py-4">No cards found.</div>
         </ng-container>
         <ng-container *ngIf="drawerType() === 'upis'">
-          <div>
-            <p-card
-              *ngFor="let upi of selectedAccount()?.upis"
-              [header]="upi.upi"
-            >
-            </p-card>
+          <div
+            *ngFor="let upi of selectedAccount()?.upis"
+            class="mb-4 p-3 rounded-lg bg-gray-800 border border-gray-700"
+          >
+            <p class="text-gray-300 text-lg">{{ upi.upi }}</p>
+          </div>
+          <div
+            *ngIf="selectedAccount()?.upis?.length === 0"
+            class="text-center text-gray-500 py-4"
+          >
+            No UPIs found.
           </div>
         </ng-container>
         <ng-container *ngIf="drawerType() === 'upis'"></ng-container>
