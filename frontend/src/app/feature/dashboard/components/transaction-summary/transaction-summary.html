@@ -1,6 +1,10 @@
 <div class="transaction-summary-container border-b-1 border-b-gray-300 mb-5">
-  <div class="transaction-summary-header mb-5 flex">
-    <h2 class="text-lg">Summary for</h2> <span class="border rounded-xl border-1 text-green-300 py-1 px-2 font-bold ml-2">{{ month }}</span>
+  <!-- <div class="transaction-summary-header mb-5 flex">
+    <h2 class="text-lg">Summary for</h2>
+    <span
+      class="border rounded-xl border-1 text-green-300 py-1 px-2 font-bold ml-2"
+      >{{ month }}</span
+    >
   </div>
   <div class="summary-details flex flex-row items-center mb-4 gap-5">
     <div class="w-[250px] border rounded border-1 p-3">
@@ -20,6 +24,38 @@
       <h2 class="font-bold text-2xl">
         {{ balance | currency : "INR" : "symbol" : "1.2-2" }}
       </h2>
+    </div>
+  </div> -->
+  <!-- Summary Section -->
+  <div class="mb-6">
+    <h3 class="text-xl font-semibold mb-4 text-gray-200">
+      Summary for
+      <span
+        class="inline-block bg-green-700 px-2 py-1 text-green-100 shadow-md ml-3"
+        >{{ month }}</span
+      >
+    </h3>
+  </div>
+  <div
+    class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 p-6 bg-gray-800"
+  >
+    <div
+      class="bg-gray-850 p-5 border border-gray-700 flex flex-col items-center justify-center text-center"
+    >
+      <p class="text-lg text-gray-400 mb-2">Total Income</p>
+      <p class="text-4xl font-bold text-green-400">₹10,000.00</p>
+    </div>
+    <div
+      class="bg-gray-850 p-5 border border-gray-700 flex flex-col items-center justify-center text-center"
+    >
+      <p class="text-lg text-gray-400 mb-2">Total Expense</p>
+      <p class="text-4xl font-bold text-red-400">₹2,000.00</p>
+    </div>
+    <div
+      class="bg-gray-850 p-5 border border-gray-700 flex flex-col items-center justify-center text-center"
+    >
+      <p class="text-lg text-gray-400 mb-2">Total Balance</p>
+      <p class="text-4xl font-bold text-blue-400">₹8,000.00</p>
     </div>
   </div>
   <div class="summary-chart">
