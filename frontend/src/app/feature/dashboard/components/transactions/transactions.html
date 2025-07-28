@@ -4,12 +4,18 @@
       <h2 class="text-2xl font-semibold mb-4">Transactions</h2>
     </div>
     <div>
-      <p-button label="Add Transaction" icon="pi pi-plus"></p-button>
+      <p-button
+        (onClick)="showAddTransaction = !showAddTransaction"
+        label="Add Transaction"
+        icon="pi pi-plus"
+      ></p-button>
     </div>
   </div>
 
   <div>
-    <app-transaction-summary [transactions]="transactions()"></app-transaction-summary>
+    <app-transaction-summary
+      [transactions]="transactions()"
+    ></app-transaction-summary>
   </div>
 
   <div class="transaction-filters mb-4">
@@ -18,16 +24,21 @@
     </div>
     <div class="flex items-end gap-10 items-center">
       <div class="flex gap-10 flex-row items-end justify-start">
-        <input
-          type="text"
-          pInputText
-          [(ngModel)]="searchQuery"
-          placeholder="Search transactions..."
-          class="w-[450px]"
-          (input)="onSearch('search')"
-          pTooltip="Search by ID, description, or category"
-          tooltipPosition="top"
-        />
+        <div class="flex-auto">
+          <label for="icondisplay" class="font-bold block mb-2">
+            Search
+          </label>
+          <input
+            type="text"
+            pInputText
+            [(ngModel)]="searchQuery"
+            placeholder="Search transactions..."
+            class="w-[450px]"
+            (input)="onSearch('search')"
+            pTooltip="Search by ID, description, or category"
+            tooltipPosition="top"
+          />
+        </div>
         <div class="flex-auto">
           <label for="icondisplay" class="font-bold block mb-2">
             Start Date
@@ -184,5 +195,11 @@
         </tr>
       </ng-template>
     </p-table>
+  </div>
+
+  <div *ngIf="showAddTransaction">
+    <app-transaction-form
+      (transactionCreated)="transactionCreated($event)"
+    ></app-transaction-form>
   </div>
 </div>

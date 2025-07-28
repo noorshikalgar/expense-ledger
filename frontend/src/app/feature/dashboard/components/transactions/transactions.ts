@@ -11,6 +11,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FormsModule } from '@angular/forms';
 import { TransactionSummary } from "../transaction-summary/transaction-summary";
+import { TransactionForm } from "../transaction-form/transaction-form";
 
 @Component({
   selector: 'app-transactions',
@@ -24,7 +25,8 @@ import { TransactionSummary } from "../transaction-summary/transaction-summary";
     InputNumberModule,
     FormsModule,
     DatePickerModule,
-    TransactionSummary
+    TransactionSummary,
+    TransactionForm
 ],
   templateUrl: './transactions.html',
   styleUrl: './transactions.scss',
@@ -42,6 +44,8 @@ export class Transactions {
   searchQuery: string = '';
   startDate: Date | null = null;
   endDate: Date | null = null;
+
+  showAddTransaction: boolean = false;
 
   constructor(private dashboardHttpService: DashboardHttpService) {}
 
@@ -126,5 +130,10 @@ export class Transactions {
 
   viewTransactionDetails(transaction: Transaction): void {
     console.log('Viewing details for transaction:', transaction.id);
+  }
+
+
+  transactionCreated(event: any): void {
+    this.fetchTransactions();
   }
 }

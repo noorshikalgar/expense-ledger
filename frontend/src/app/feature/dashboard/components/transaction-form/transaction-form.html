@@ -1,1 +1,306 @@
-<p>transaction-form works!</p>
+<div>
+  <p-dialog
+    [(visible)]="displayAddTransactionDialog"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [header]="'Add New Transaction'"
+    [style]="{ width: '40vw' }"
+    styleClass="bg-gray-800 text-gray-100 rounded-lg shadow-2xl"
+    (onHide)="hideAddTransactionDialog()"
+  >
+    <ng-template pTemplate="content">
+      <form [formGroup]="transactionForm" class="p-fluid">
+        <!-- Error messages at the top of the form -->
+        <!-- <p-message>{}</p-message> -->
+
+        <div class="field mb-4">
+          <label for="type" class="block text-gray-300 text-sm font-bold mb-2"
+            >Type <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="type"
+            formControlName="type"
+            [options]="types"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select Type"
+            [ngClass]="{
+              'ng-invalid ng-dirty': type?.invalid && type?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+          <!-- [dropdownIconTemplate]="primeIconsDropdownIconTemplate" -->
+          <small
+            class="p-error block mt-1"
+            *ngIf="type?.invalid && type?.touched"
+            >Type is required.</small
+          >
+        </div>
+
+        <div class="field mb-4">
+          <label for="nature" class="block text-gray-300 text-sm font-bold mb-2"
+            >Nature <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="nature"
+            formControlName="nature"
+            [options]="natures"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select Nature"
+            [ngClass]="{
+              'ng-invalid ng-dirty': nature?.invalid && nature?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+          <small
+            class="p-error block mt-1"
+            *ngIf="nature?.invalid && nature?.touched"
+            >Nature is required.</small
+          >
+        </div>
+
+        <div class="field mb-4">
+          <label
+            for="category"
+            class="block text-gray-300 text-sm font-bold mb-2"
+            >Category <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="category"
+            formControlName="category_id"
+            [options]="categories()"
+            optionLabel="name"
+            optionValue="id"
+            placeholder="Select Category"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                category_id?.invalid && category_id?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+          <small
+            class="p-error block mt-1"
+            *ngIf="category_id?.invalid && category_id?.touched"
+            >Category is required.</small
+          >
+        </div>
+
+        <div class="field mb-4">
+          <label
+            for="description"
+            class="block text-gray-300 text-sm font-bold mb-2"
+            >Description <span class="text-red-500">*</span></label
+          >
+          <input
+            id="description"
+            type="text"
+            pInputText
+            formControlName="description"
+            placeholder="e.g., Dinner with friends"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                description?.invalid && description?.touched
+            }"
+            class="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md py-2 px-3 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
+          />
+          <small
+            class="p-error block mt-1"
+            *ngIf="description?.invalid && description?.touched"
+            >Description is required.</small
+          >
+        </div>
+
+        <div class="field mb-4">
+          <label for="amount" class="block text-gray-300 text-sm font-bold mb-2"
+            >Amount <span class="text-red-500">*</span></label
+          >
+          <input
+            id="amount"
+            type="number"
+            pInputText
+            formControlName="amount"
+            placeholder="e.g., 500.00"
+            [ngClass]="{
+              'ng-invalid ng-dirty': amount?.invalid && amount?.touched
+            }"
+            class="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md py-2 px-3 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
+          />
+          <small
+            class="p-error block mt-1"
+            *ngIf="amount?.invalid && amount?.touched"
+          >
+            <ng-container *ngIf="amount?.errors?.['required']">
+              Amount is required.
+            </ng-container>
+            <ng-container *ngIf="amount?.errors?.['min']">
+              Amount must be greater than 0.
+            </ng-container>
+          </small>
+        </div>
+
+        <div class="field mb-4">
+          <label
+            for="account"
+            class="block text-gray-300 text-sm font-bold mb-2"
+            >Account <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="account"
+            formControlName="account_id"
+            [options]="accounts()"
+            optionLabel="name"
+            optionValue="id"
+            placeholder="Select Account"
+            [ngClass]="{
+              'ng-invalid ng-dirty': account_id?.invalid && account_id?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+          <small
+            class="p-error block mt-1"
+            *ngIf="account_id?.invalid && account_id?.touched"
+            >Account is required.</small
+          >
+        </div>
+
+        <div class="field mb-4">
+          <label for="method" class="block text-gray-300 text-sm font-bold mb-2"
+            >Payment Method <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="method"
+            formControlName="method"
+            [options]="methods"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select Payment Method"
+            [ngClass]="{
+              'ng-invalid ng-dirty': method?.invalid && method?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+        </div>
+
+        @if (method?.value === 'card') {
+        <div class="field mb-4">
+          <label for="card" class="block text-gray-300 text-sm font-bold mb-2"
+            >Card <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="card"
+            formControlName="card_id"
+            [options]="cards()"
+            optionLabel="card_number"
+            optionValue="id"
+            placeholder="Select Card"
+            [ngClass]="{
+              'ng-invalid ng-dirty': card_id?.invalid && card_id?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+          <!-- <small
+              class="p-error block mt-1"
+              *ngIf="card_id?.invalid && card_id?.touched"
+              >Card is required.</small
+            > -->
+        </div>
+        } @if (method?.value === 'upi') {
+        <div class="field mb-4">
+          <label for="upi" class="block text-gray-300 text-sm font-bold mb-2"
+            >UPI <span class="text-red-500">*</span></label
+          >
+          <p-select
+            id="upi"
+            formControlName="upi_id"
+            [options]="upis()"
+            optionLabel="upi"
+            optionValue="id"
+            placeholder="Select UPI"
+            [ngClass]="{
+              'ng-invalid ng-dirty': upi_id?.invalid && upi_id?.touched
+            }"
+            styleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md"
+            [panelStyle]="{ 'background-color': '#2C2C2C', color: '#E0E0E0' }"
+          ></p-select>
+          <small
+            class="p-error block mt-1"
+            *ngIf="upi_id?.invalid && upi_id?.touched"
+            >Card is required.</small
+          >
+        </div>
+        }
+
+        <div class="field mb-4">
+          <label
+            for="transactionDate"
+            class="block text-gray-300 text-sm font-bold mb-2"
+            >Transaction Date <span class="text-red-500">*</span></label
+          >
+          <p-datepicker
+            id="transactionDate"
+            formControlName="transaction_date"
+            dateFormat="M dd, yy"
+            [showIcon]="true"
+            appendTo="body"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                transaction_date?.invalid && transaction_date?.touched
+            }"
+            inputStyleClass="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md py-2 px-3 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
+            icon="pi pi-calendar"
+            iconDisplay="input"
+          ></p-datepicker>
+          <small
+            class="p-error block mt-1"
+            *ngIf="transaction_date?.invalid && transaction_date?.touched"
+            >Transaction date is required.</small
+          >
+        </div>
+
+        <div class="field flex gap-5 items-center mb-4">
+          <!-- <p-inputSwitch id="isPaid" formControlName="is_paid"></p-inputSwitch> -->
+          <label for="isPaid" class="text-gray-300 text-sm font-bold"
+            >Is Paid</label
+          >
+          <p-toggleswitch id="isPaid" formControlName="is_paid" />
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        icon="pi pi-times"
+        class="p-button-text p-button-secondary rounded-lg"
+        (click)="hideAddTransactionDialog()"
+      ></button>
+      <button
+        pButton
+        type="submit"
+        label="Add Transaction"
+        icon="pi pi-check"
+        class="p-button-success rounded-lg"
+        (click)="onSubmit()"
+        [disabled]="transactionForm.invalid"
+      ></button>
+    </ng-template>
+
+    <!-- Custom icon template for dropdowns to keep them consistent -->
+    <ng-template #primeIconsDropdownIconTemplate let-icon>
+      <span class="pi pi-chevron-down text-gray-400"></span>
+    </ng-template>
+  </p-dialog>
+
+  <!-- Toast for success/error messages -->
+  <!-- <p-toast></p-toast> -->
+</div>
